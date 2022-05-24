@@ -29,8 +29,9 @@ function GameTime(playerSelection, computerSelection){
         } else {
             return "Computer wins! You suck!"
         }
+    }
 }
 
-const playerSelection = "rock";
+const playerSelection = "ROCK";
 const computerSelection = computerPlay();
-console.log(GameTime(playerSelection,computerSelection));
+console.log(GameTime(playerSelection.toLowerCase(),computerSelection));
