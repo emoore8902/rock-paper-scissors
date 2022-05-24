@@ -8,7 +8,7 @@ function computerPlay(){
         return "Scissors";
     }
 }
-function GameTime(playerSelection, computerSelection){
+function Round(playerSelection, computerSelection){
     if (playerSelection == computerSelection){
         return "Tie Round!";
     } else if (playerSelection == "rock"){
@@ -32,6 +32,21 @@ function GameTime(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = "ROCK";
-const computerSelection = computerPlay();
-console.log(GameTime(playerSelection.toLowerCase(),computerSelection));
+function GameTime(){
+    let playerPoints = 0, computerPoints = 0;
+    for (let i = 0; i < 5; i++){
+        let playerSelection = prompt();
+        let computerSelection = computerPlay();
+        let result = Round(playerSelection.toLowerCase(), computerSelection);
+        if (result == "Player wins! Computers suck!"){
+            playerPoints = playerPoints + 1;
+            console.log("Player wins! Current score is player:" + playerPoints + " computer:" + computerPoints);
+        } else if (result == "Computer wins! You suck!"){
+            computerPoints = computerPoints + 1;
+            console.log("Computer wins! Current score is player:" + playerPoints + " computer:" + computerPoints);
+        } else if (result == "Tie Round!") {
+            console.log("Tie Round! Current score is player:" + playerPoints + " computer:" + computerPoints);
+        }
+    }
+}
+GameTime();
