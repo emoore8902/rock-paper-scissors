@@ -1,38 +1,67 @@
+let playerPoints = 0;
+let computerPoints = 0;
+let roundWinner = '';
+
 function computerPlay(){
     let RandomNumber = Math.floor(Math.random() * 4);
     if (RandomNumber === 0){
-        return "Rock";
+        return "ROCK";
     } else if (RandomNumber == 1) {
-        return "Paper";
+        return "PAPER";
     } else {
-        return "Scissors";
+        return "SCISSORS";
     }
 }
 function Round(playerSelection, computerSelection){
     if (playerSelection == computerSelection){
-        return "Tie Round!";
-    } else if (playerSelection == "rock"){
-        if(computerSelection == "Scissors"){
-            return "Player wins! Computers suck!"
+        roundWinner = 'tie';
+    } else if (playerSelection == "ROCK"){
+        if(computerSelection == "SCISSORS"){
+            playerPoints ++;
+            roundWinner = 'player';
         } else {
-            return "Computer wins! You suck!"
+            computerPoints ++;
+            roundWinner = 'computer';
         }
-    } else if (playerSelection == "scissors"){
-        if(computerSelection == "Paper"){
-            return "Player wins! Computers suck!"
+    } else if (playerSelection == "SCISSORS"){
+        if(computerSelection == "PAPER"){
+            playerPoints ++;
+            roundWinner = 'player';
         } else {
-            return "Computer wins! You suck!"
+            computerPoints ++;
+            roundWinner = 'computer';
         }
-    } else if (playerSelection == "paper"){
-        if(computerSelection == "Rock"){
-            return "Player wins! Computers suck!"
+    } else if (playerSelection == "PAPER"){
+        if(computerSelection == "ROCK"){
+            playerPoints ++;
+            roundWinner = 'player';
         } else {
-            return "Computer wins! You suck!"
+            computerPoints ++;
+            roundWinner = 'computer';
         }
     }
+    updateResults(roundWinner, playerPoints, computerPoints);
 }
-function buttonControl(playerSelection){
 
+
+const rockBtn = document.getElementById('rockBtn')
+const paperBtn = document.getElementById('paperBtn')
+const scissorsBtn = document.getElementById('scissorsBtn')
+const playerScorePara = document.getElementById('playerPoints')
+const computerScorePara = document.getElementById('computerPoints')
+
+rockBtn.addEventListener('click', () => buttonControl('ROCK'));
+paperBtn.addEventListener('click', () => buttonControl('PAPER'));
+scissorsBtn.addEventListener('click', () => buttonControl('SCISSORS'));
+
+function buttonControl(playerSelection){
+    let computerSelection = computerPlay();
+    Round(playerSelection, computerSelection);
+}
+
+function updateResults(roundWinner, playerPoints, computerPoints){
+    playerScorePara.textContent = 'Player:' + playerPoints;
+    computerScorePara.textContent = 'Computer: ' + computerPoints;
 }
 /*
 function GameTime(){
@@ -53,6 +82,3 @@ function GameTime(){
     }
 } 
 GameTime(); */
-rockBtn.addEventListener('click', () => buttonControl('ROCK'));
-paperBtn.addEventListener('click', () => buttonControl('PAPER'));
-scissorsBtn.addEventListener('click', () => buttonControl('SCISSORS'));
