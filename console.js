@@ -1,6 +1,7 @@
 let playerPoints = 0;
 let computerPoints = 0;
 let roundWinner = '';
+let computerSelection = computerPlay();
 
 function computerPlay(){
     let RandomNumber = Math.floor(Math.random() * 4);
@@ -40,45 +41,40 @@ function Round(playerSelection, computerSelection){
             roundWinner = 'computer';
         }
     }
-    updateResults(roundWinner, playerPoints, computerPoints);
+    updateResults(roundWinner, playerPoints, computerPoints, playerSelection);
 }
 
-
-const rockBtn = document.getElementById('rockBtn')
-const paperBtn = document.getElementById('paperBtn')
-const scissorsBtn = document.getElementById('scissorsBtn')
-const playerScorePara = document.getElementById('playerPoints')
-const computerScorePara = document.getElementById('computerPoints')
+const scoreInfo = document.getElementById('scoreInfo');
+const scoreMessage = document.getElementById('scoreMessage');
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
+const playerScorePara = document.getElementById('playerPoints');
+const computerScorePara = document.getElementById('computerPoints');
 
 rockBtn.addEventListener('click', () => buttonControl('ROCK'));
 paperBtn.addEventListener('click', () => buttonControl('PAPER'));
 scissorsBtn.addEventListener('click', () => buttonControl('SCISSORS'));
 
 function buttonControl(playerSelection){
-    let computerSelection = computerPlay();
-    Round(playerSelection, computerSelection);
+    if (playerPoints === 5 || computerPoints === 5){
+        return;
+    } else {
+        Round(playerSelection, computerSelection);
+    }
 }
 
-function updateResults(roundWinner, playerPoints, computerPoints){
+function updateResults(roundWinner, playerPoints, computerPoints, playerSelection){
     playerScorePara.textContent = 'Player:' + playerPoints;
     computerScorePara.textContent = 'Computer: ' + computerPoints;
-}
-/*
-function GameTime(){
-    let playerPoints = 0, computerPoints = 0;
-    for (let i = 0; i < 5; i++){
-        let playerSelection = prompt();
-        let computerSelection = computerPlay();
-        let result = Round(playerSelection.toLowerCase(), computerSelection);
-        if (result == "Player wins! Computers suck!"){
-            playerPoints = playerPoints + 1;
-            console.log("Player wins! Current score is player:" + playerPoints + " computer:" + computerPoints);
-        } else if (result == "Computer wins! You suck!"){
-            computerPoints = computerPoints + 1;
-            console.log("Computer wins! Current score is player:" + playerPoints + " computer:" + computerPoints);
-        } else if (result == "Tie Round!") {
-            console.log("Tie Round! Current score is player:" + playerPoints + " computer:" + computerPoints);
-        }
+    if (roundWinner == 'tie'){
+        scoreInfo.textContent = 'It\'s a tie!';
+        scoreMessage.textContent = playerSelection + ' ties with ' + computerSelection;
+    } else if (roundWinner == 'player') {
+        scoreInfo.textContent = 'Player wins!';
+        scoreMessage.textContent = playerSelection + ' beats ' + computerSelection;
+    } else if (roundWinner == 'computer') {
+        scoreInfo.textContent = "Computer wins!";
+        scoreMessage.textContent = playerSelection + ' is beaten by ' + computerSelection;
     }
-} 
-GameTime(); */
+}
