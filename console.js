@@ -31,7 +31,10 @@ function Round(playerSelection, computerSelection){
         }
     }
 }
+function buttonControl(playerSelection){
 
+}
+/*
 function GameTime(){
     let playerPoints = 0, computerPoints = 0;
     for (let i = 0; i < 5; i++){
@@ -48,5 +51,8 @@ function GameTime(){
             console.log("Tie Round! Current score is player:" + playerPoints + " computer:" + computerPoints);
         }
     }
-}
-GameTime();
+} 
+GameTime(); */
+rockBtn.addEventListener('click', () => buttonControl('ROCK'));
+paperBtn.addEventListener('click', () => buttonControl('PAPER'));
+scissorsBtn.addEventListener('click', () => buttonControl('SCISSORS'));
