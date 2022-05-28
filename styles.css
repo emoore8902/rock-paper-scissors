@@ -1,0 +1,92 @@
+header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 px;
+    background-color: #171c22;
+}
+
+.title{
+    font-size: 40px;
+}
+body{
+    background-color: #222831;
+    color: #ddd
+}
+
+
+/* buttons */
+
+.buttons{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20 px;
+}
+.btn {
+    border-radius: 10px;
+    background-color: #2d3747;
+  }
+  
+.btn-square {
+    background-color: #2d3747;
+    width: 160px;
+    height: 160px;
+}
+.sign{
+    font-size: 75px;
+}
+
+/*scoreboard tracker*/
+
+.score-message {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20 px;
+}
+
+.score-info {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20 px;
+}
+
+.main {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .scoreboard {
+    margin-bottom: 15px;
+  }
+  
+  .score-info {
+    font-size: 32px;
+  }
+  
+  .score-message {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .results-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  
+  .score-box {
+    width: 170px;
+  }
+  
+  .score {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+  }

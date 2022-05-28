@@ -1,7 +1,7 @@
 let playerPoints = 0;
 let computerPoints = 0;
 let roundWinner = '';
-let computerSelection = computerPlay();
+let computerSelection = '';
 
 function computerPlay(){
     let RandomNumber = Math.floor(Math.random() * 4);
@@ -60,6 +60,7 @@ function buttonControl(playerSelection){
     if (playerPoints === 5 || computerPoints === 5){
         return;
     } else {
+        computerSelection = computerPlay();
         Round(playerSelection, computerSelection);
     }
 }
