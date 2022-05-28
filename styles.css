@@ -71,7 +71,7 @@ body{
     margin-bottom: 15px;
   }
   
-  .results-container {
+  .results {
     display: flex;
     align-items: center;
     justify-content: space-between;

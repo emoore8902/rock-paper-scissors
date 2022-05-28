@@ -68,7 +68,10 @@ function buttonControl(playerSelection){
 function updateResults(roundWinner, playerPoints, computerPoints, playerSelection){
     playerScorePara.textContent = 'Player:' + playerPoints;
     computerScorePara.textContent = 'Computer: ' + computerPoints;
-    if (roundWinner == 'tie'){
+    if (playerPoints === 5 || computerPoints === 5) {
+        endGame();
+    }
+    else if (roundWinner == 'tie'){
         scoreInfo.textContent = 'It\'s a tie!';
         scoreMessage.textContent = playerSelection + ' ties with ' + computerSelection;
     } else if (roundWinner == 'player') {
@@ -77,5 +80,15 @@ function updateResults(roundWinner, playerPoints, computerPoints, playerSelectio
     } else if (roundWinner == 'computer') {
         scoreInfo.textContent = "Computer wins!";
         scoreMessage.textContent = playerSelection + ' is beaten by ' + computerSelection;
+    }
+}
+
+function endGame(){
+    if (playerPoints === 5){
+        scoreInfo.textContent = 'Congratulations!';
+        scoreMessage.textContent = 'You have beaten the computer!';
+    } else if (computerPoints === 5) {
+        scoreInfo.textContent = 'You lose';
+        scoreMessage.textContent = 'Better luck next time!';
     }
 }
