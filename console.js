@@ -4,7 +4,7 @@ let roundWinner = '';
 let computerSelection = '';
 
 function computerPlay(){
-    let RandomNumber = Math.floor(Math.random() * 4);
+    let RandomNumber = Math.floor(Math.random() * 3);
     if (RandomNumber === 0){
         return "ROCK";
     } else if (RandomNumber == 1) {
